@@ -21,6 +21,28 @@
   outline: none;
 }
 
+.sudoku {
+  grid-template: repeat(9, 48px) / repeat(9, 48px);
+  width: calc(48px * 9);
+}
+
+.sudoku div {
+  border-color: #ccc;
+  border-width: 1px;
+}
+
+.sudoku div input {
+  color: #000000;
+  padding: 0;
+  border: 0;
+  text-align: center;
+  width: 46px;
+  height: 46px;
+  font-size: 24px;
+  background-color: #FFFFFF;
+  outline: none;
+}
+
 /* Alerts and form errors used by phx.new */
 .alert {
   padding: 15px;

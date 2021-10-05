@@ -1,5 +1,7 @@
 # Sudoku
 
+Sudoku Solver
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
