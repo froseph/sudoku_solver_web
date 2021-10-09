@@ -15,6 +15,5 @@ defmodule Sudoku.Board.Cell do
     |> validate_required([:row, :col])
     |> validate_number(:row, greater_than_or_equal_to: 0)
     |> validate_number(:col, greater_than_or_equal_to: 0)
-    |> validate_number(:value, greater_than_or_equal_to: 0)
   end
 end

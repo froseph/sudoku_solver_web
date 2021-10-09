@@ -4,6 +4,25 @@
 </section>
 
 <div class="container">
+
+    <%= form_for @changeset, Routes.page_path(@conn, :update), fn f -> %>
+    <h1 class="text-5xl text-center mx-auto"> Sudoku Populated </h1>
+    <%# To allow for arbitrary sudokus, I should be generating this as a style%>
+    <div class="sudoku grid border-4 border-black border-solid mx-auto box-content my-8">
+        <%= hidden_input f, :size %>
+        <%= inputs_for f, :cells, fn c -> %>
+            <div data-row={c.data.row} data-col={c.data.col}>
+            <%= text_input c, :value, row: c.data.row, col: c.data.col, maxlength: 1%>
+            <%= hidden_input c, :row%>
+            <%= hidden_input c, :col%>
+            </div>
+        <% end %>
+    </div>
+    <div class="text-center my-8">
+        <%= submit "Find Solution", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>
+    <% end %>
+
     <h1 class="text-5xl text-center mx-auto mb-8"> Sudoku </h1>
     <table id="sudoku" class="max-w-screen-sm mx-auto">
         <colgroup class="border-solid border-4 border-black">
@@ -128,9 +147,9 @@
         </tbody>
     </table>
 
-    <h1 class="text-5xl text-center mx-auto mb-8"> Sudoku </h1>
+    <h1 class="text-5xl text-center mx-auto mb"> Sudoku </h1>
     <%# To allow for arbitrary sudokus, I should be generating this as a style%>
-    <div class="sudoku grid border-4 border-black border-solid mx-auto box-content">
+    <div class="sudoku grid border-4 border-black border-solid mx-auto box-content my-8">
         <div><input type="text" maxlength="1"></div>
         <div><input type="text" maxlength="1"></div>
         <div><input type="text" maxlength="1"></div>
@@ -213,6 +232,9 @@
         <div><input type="text" maxlength="1"></div>
         <div><input type="text" maxlength="1"></div>
     </div>
+
+
+
 </div>
 
 

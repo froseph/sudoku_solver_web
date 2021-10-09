@@ -43,6 +43,15 @@
   outline: none;
 }
 
+.sudoku div[data-row="2"],
+.sudoku div[data-row="5"] {
+  border-bottom:  1px solid black;
+}
+.sudoku div[data-col="2"],
+.sudoku div[data-col="5"] {
+  border-right:  1px solid black;
+}
+
 /* Alerts and form errors used by phx.new */
 .alert {
   padding: 15px;
