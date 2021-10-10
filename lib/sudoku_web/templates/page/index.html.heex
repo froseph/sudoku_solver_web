@@ -1,18 +1,12 @@
-<section class="phx-hero">
-    <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-    <p>Peace of mind from prototype to production</p>
-</section>
-
 <div class="container">
 
     <%= form_for @changeset, Routes.page_path(@conn, :update), fn f -> %>
-    <h1 class="text-5xl text-center mx-auto"> Sudoku Populated </h1>
-    <%# To allow for arbitrary sudokus, I should be generating this as a style%>
+    <h1 class="text-5xl text-center mx-auto"> Sudoku Solver </h1>
     <div class="sudoku grid border-4 border-black border-solid mx-auto box-content my-8">
         <%= hidden_input f, :size %>
         <%= inputs_for f, :cells, fn c -> %>
-            <div data-row={c.data.row} data-col={c.data.col}>
-            <%= text_input c, :value, row: c.data.row, col: c.data.col, maxlength: 1%>
+            <div data-row={Ecto.Changeset.get_field(c.source, :row)} data-col={Ecto.Changeset.get_field(c.source, :col)}>
+            <%= text_input c, :value, row: Ecto.Changeset.get_field(c.source, :row), col: Ecto.Changeset.get_field(c.source, :col), maxlength: 1%>
             <%= hidden_input c, :row%>
             <%= hidden_input c, :col%>
             </div>
@@ -146,94 +140,6 @@
             </tr>
         </tbody>
     </table>
-
-    <h1 class="text-5xl text-center mx-auto mb"> Sudoku </h1>
-    <%# To allow for arbitrary sudokus, I should be generating this as a style%>
-    <div class="sudoku grid border-4 border-black border-solid mx-auto box-content my-8">
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-        <div><input type="text" maxlength="1"></div>
-    </div>
-
-
 
 </div>
 

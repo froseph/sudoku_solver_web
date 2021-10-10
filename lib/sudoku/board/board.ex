@@ -12,13 +12,6 @@ defmodule Sudoku.Board.Board do
     embeds_many(:cells, Cell)
   end
 
-  def test_changeset(board, attrs \\ %{}) do
-    board
-    |> cast(attrs, [:size])
-    |> put_embed(:cells, Map.get(attrs, :cells))
-    |> validate_change(:cells, &validate_cells/2)
-  end
-
   def changeset(board, attrs \\ %{}) do
     board
     |> cast(attrs, [:size])
@@ -27,7 +20,10 @@ defmodule Sudoku.Board.Board do
   end
 
   defp validate_cells(:cells, cells) do
-    set = MapSet.new(cells, fn c -> {c.data.row, c.data.col} end)
+    set =
+      MapSet.new(cells, fn c ->
+        if c.data.row, do: {c.data.row, c.data.col}, else: {c.changes.row, c.changes.col}
+      end)
 
     cells_out_of_bounds? =
       Enum.any?(set, fn {row, col} ->
