@@ -9,7 +9,7 @@ defmodule Sudoku.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      Sudoku.Repo,
+      # Sudoku.Repo,
       # Start the Telemetry supervisor
       SudokuWeb.Telemetry,
       # Start the PubSub system
